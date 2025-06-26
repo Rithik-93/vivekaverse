@@ -54,7 +54,7 @@ const Index = () => {
       formData.append('posType', posType);
       formData.append('sourceType', sourceType);
 
-      const response = await fetch('http://localhost:3000/api/process-excel-comparison', {
+      const response = await fetch('https://api-p0qm.onrender.com/api/process-excel-comparison', {
         method: 'POST',
         body: formData,
       });
