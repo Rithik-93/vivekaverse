@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Upload, ArrowRight, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "../hooks/use-toast";
+// import { toast } from "../hooks/use-toast";
 
 const Index = () => {
   const [posFile, setPosFile] = useState<File | null>(null);
@@ -22,21 +22,21 @@ const Index = () => {
       setSourceFiles((prev) => [...prev, ...filesArray]);
     }
 
-    toast({
-      title: "File uploaded successfully",
-      description: Array.isArray(file)
-        ? `${file.length} files have been uploaded.`
-        : `${(file as File).name} has been uploaded.`,
-    });
+    // toast({
+    //   title: "File uploaded successfully",
+    //   description: Array.isArray(file)
+    //     ? `${file.length} files have been uploaded.`
+    //     : `${(file as File).name} has been uploaded.`,
+    // });
   };
 
   const handleCompare = async () => {
     if (!posFile || !sourceFiles.length || !posType || !sourceType) {
-      toast({
-        title: "Missing Information",
-        description: "Please upload both files and select platform types.",
-        variant: "destructive",
-      });
+      // toast({
+      //   title: "Missing Information",
+      //   description: "Please upload both files and select platform types.",
+      //   variant: "destructive",
+      // });
       return;
     }
 
@@ -74,19 +74,19 @@ const Index = () => {
         results: data
       }));
 
-      toast({
-        title: "Processing Complete!",
-        description: `Found ${data.matchCount} exact matches out of ${data.totalPOSRecords} orders.`,
-      });
+      // toast({
+      //   title: "Processing Complete!",
+      //   description: `Found ${data.matchCount} exact matches out of ${data.totalPOSRecords} orders.`,
+      // });
 
       navigate('/results');
     } catch (error) {
       console.error('Error during file processing:', error);
-      toast({
-        title: "Processing Failed",
-        description: "An error occurred while processing the files.",
-        variant: "destructive",
-      });
+      // toast({
+      //   title: "Processing Failed",
+      //   description: "An error occurred while processing the files.",
+      //   variant: "destructive",
+      // });
     } finally {
       setIsProcessing(false);
     }
